@@ -1,2 +1,2 @@
-export FLASK_APP=microblog
+export FLASK_APP=microblog.py
 export FLASK_ENV=devlopment

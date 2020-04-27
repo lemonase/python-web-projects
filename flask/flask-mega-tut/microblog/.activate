@@ -1,0 +1,2 @@
+source .flaskenv
+source venv/bin/activate

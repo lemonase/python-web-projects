@@ -1,19 +1,22 @@
 import secrets
+import sys
 from datetime import datetime
 
-from .app import db
+from todo.app import db
 
 
 class Task(db.Model):
     """ Todo list tasks"""
+    # fields
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode, nullable=False)
     note = db.Column(db.Unicode)
     creation_date = db.Column(db.DateTime, nullable=False)
     due_date = db.Column(db.DateTime)
     completed = db.Column(db.Boolean, default=False)
-
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    # relationships
     user = db.relationship("user", back_populates="tasks")
 
     def __init__(self, *args, **kwargs):

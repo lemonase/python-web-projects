@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-horizontal" action="/add" method="post">
+        <div class="form-group">
+          <h1><label for="title">Enter A Todo Task:</label></h1>
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Todo Text"
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">
+            Add
+          </button>
+        </div>
+      </form>
+
+      <ul>
+        {% for todo in todo_list %}
+        <li>
+          {% if todo.complete == True %}
+          <h2><s> {{ todo.title }} </s></h2>
+          {% else %}
+          <h2>{{ todo.title }}</h2>
+          {% endif %}
+          <a href="/update/{{ todo.id }}">
+            <button class="btn btn-success">Complete</button>
+          </a>
+          <a href="/delete/{{ todo.id }}">
+            <button class="btn btn-danger">Delete</button>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

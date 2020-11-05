@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<table cellpadding=10px border=1>
+  <thead style="font-weight: bold">
+    <tr>
+      <td>Name</td>
+      <td>Sport</td>
+    </tr>
+  </thead>
+  {% for row in registrants %}
+  <tr>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
